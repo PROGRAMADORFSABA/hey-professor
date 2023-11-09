@@ -1,10 +1,8 @@
 name: Laravel
 
 on:
-  push:
-    branches: [ "develop" ]
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "main", "develop" ]
 
 jobs:
   laravel-tests:
@@ -36,10 +34,11 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
         
-        run: php artisan test --parallel
-    - nome: execute larastan 
+      run: php artisan test --parallel
+      
+    - name: Execute Larastan 
       run: vendor/bin/phpstan analyse
 
-    - nome: execute laravel pint
+    - name: execute laravel pint
       run: vendor/bin/pin --test
-      run: vendor/bin/phpunit
+  
