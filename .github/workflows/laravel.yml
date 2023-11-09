@@ -32,5 +32,11 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
+        
         run: php artisan test --parallel
+      - nome: execute larastan 
+        run: vendor/bin/phpstan analyse
+
+      - nome: execute laravel pint
+        run: vendor/bin/pin --test
       run: vendor/bin/phpunit
