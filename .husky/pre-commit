@@ -25,3 +25,4 @@ do
 done;
 
 exit 0;
+npm test
