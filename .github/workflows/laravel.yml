@@ -26,6 +26,9 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
+    - name: Instale Pakage.json
+      run: npm install
+      
     - name: Build assets
       run: npm run build
         
@@ -40,5 +43,5 @@ jobs:
       run: vendor/bin/phpstan analyse
 
     - name: execute laravel pint
-      run: vendor/bin/pin --test
+      run: vendor/bin/pint --test
   
