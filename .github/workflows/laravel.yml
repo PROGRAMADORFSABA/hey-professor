@@ -28,17 +28,18 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
-        - name: Build assets
+    - name: Build assets
         run: npm run build
+        
     - name: Execute tests (Unit and Feature tests) via PEST
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
         
         run: php artisan test --parallel
-      - nome: execute larastan 
+    - nome: execute larastan 
         run: vendor/bin/phpstan analyse
 
-      - nome: execute laravel pint
+    - nome: execute laravel pint
         run: vendor/bin/pin --test
       run: vendor/bin/phpunit
